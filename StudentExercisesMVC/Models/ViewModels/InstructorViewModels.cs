@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentExercisesMVC.Models.ViewModels
 {
-    public class InstructorViewModel
+    public class InstructorViewModels
     {
         public Instructor Instructor { get; set; }
 
