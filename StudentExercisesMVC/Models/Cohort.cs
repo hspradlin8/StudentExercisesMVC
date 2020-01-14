@@ -9,9 +9,8 @@ namespace StudentExercisesMVC.Models
     public class Cohort
     {
         public int Id { get; set; }
-        [Display(Name = "First Name")]
+        [Display(Name = "Cohort")]
         [Required]
-        [MaxLength(15, ErrorMessage = "First Name must be less than 15 characters")]
         public string Name {get;set;}
         
     }

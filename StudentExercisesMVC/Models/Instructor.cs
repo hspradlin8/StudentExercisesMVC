@@ -15,9 +15,11 @@ namespace StudentExercisesMVC.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Display(Name = "SLack Handle")]
+        [Display(Name = "Slack Handle")]
         public string SlackHandle { get; set; }
         public int CohortId { get; set; }
         public string Specialty { get; set; }
+        [Display(Name = "Cohort")]
+        public Cohort Cohort  { get; set; }
     }
 }
