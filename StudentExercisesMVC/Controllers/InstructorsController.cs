@@ -65,9 +65,10 @@ namespace StudentExercisesMVC.Controllers
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, FirstName, LastName, SlackHandle, CohortId, Specialty
-                                        FROM Instructor 
-                                        WHERE Id = @id";
+                    cmd.CommandText = @"SELECT i.Id, i.FirstName, i.LastName, i.SlackHandle, i.CohortId, i.Specialty, c.[Name]
+                                        FROM Instructor i
+                                        LEFT JOIN Cohort c ON i.CohortId = c.Id
+                                        WHERE i.Id = @id";
 
                     cmd.Parameters.Add(new SqlParameter("@id", id));
                     var reader = cmd.ExecuteReader();
@@ -81,7 +82,12 @@ namespace StudentExercisesMVC.Controllers
                             LastName = reader.GetString(reader.GetOrdinal("LastName")),
                             SlackHandle = reader.GetString(reader.GetOrdinal("SlackHandle")),
                             CohortId = reader.GetInt32(reader.GetOrdinal("CohortId")),
-                            Specialty = reader.GetString(reader.GetOrdinal("Specialty"))
+                            Specialty = reader.GetString(reader.GetOrdinal("Specialty")),
+                            Cohort = new Cohort
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                            }
                         };
 
                         reader.Close();
