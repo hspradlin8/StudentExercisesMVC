@@ -88,6 +88,7 @@ namespace StudentExercisesMVC.Controllers
                                 CohortId = reader.GetInt32(reader.GetOrdinal("CohortId")),
                                 Cohort = new Cohort
                                 {
+                                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                     Name = reader.GetString(reader.GetOrdinal("Name"))
                                 }
                             };
